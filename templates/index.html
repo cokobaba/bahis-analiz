@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>PRO ODDS ANALYZER</title>
+    <style>
+        body { background-color: #0b0f19; color: #f8fafc; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; }
+        .container { max-width: 950px; margin: 0 auto; background: #111827; padding: 25px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        h1 { color: #38bdf8; text-align: center; margin-bottom: 25px; font-size: 22px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .form-group { display: flex; flex-direction: column; }
+        label { font-size: 13px; font-weight: bold; color: #94a3b8; margin-bottom: 5px; }
+        select, input { background: #1f2937; border: 1px solid #374151; color: white; padding: 10px; border-radius: 6px; font-size: 14px; }
+        select:focus, input:focus { outline: none; border-color: #38bdf8; }
+        button { background: #2563eb; color: white; border: none; padding: 12px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; grid-column: span 2; margin-top: 10px; transition: background 0.2s; }
+        button:hover { background: #1d4ed8; }
+        pre { background: #07090e; color: #38bdf8; padding: 15px; border-radius: 8px; font-family: 'Consolas', monospace; font-size: 13px; overflow-x: auto; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚡ PRO STATS & ODDS ENGINE (WEB)</h1>
+        <form method="POST">
+            <div class="grid">
+                <div class="form-group">
+                    <label>LİG SEÇİMİ</label>
+                    <select name="lig">
+                        <option value="Süper Lig">Süper Lig</option>
+                        <option value="Premier Lig">Premier Lig</option>
+                        <option value="La Liga">La Liga</option>
+                        <option value="Serie A">Serie A</option>
+                        <option value="MLS">MLS</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>1. TAKIM (OPSİYONEL)</label>
+                    <input type="text" name="takim1" placeholder="Örn: Galatasaray">
+                </div>
+                <div class="form-group">
+                    <label>MS1 ORAN</label>
+                    <input type="text" name="m1" value="1.46">
+                </div>
+                <div class="form-group">
+                    <label>2. TAKIM (OPSİYONEL)</label>
+                    <input type="text" name="takim2" placeholder="Örn: Fenerbahçe">
+                </div>
+                <div class="form-group">
+                    <label>MS0 ORAN</label>
+                    <input type="text" name="m0" value="4.53">
+                </div>
+                <div class="form-group">
+                    <label>MS2 ORAN</label>
+                    <input type="text" name="m2" value="6.29">
+                </div>
+                <button type="submit">⚡ ANALİZİ BAŞLAT</button>
+            </div>
+        </form>
+
+        {% if rapor %}
+            <h3>ANALİZ SONUÇ RAPORU</h3>
+            <pre>{{ rapor }}</pre>
+        {% endif %}
+    </div>
+</body>
+</html>
